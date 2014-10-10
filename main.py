@@ -7,12 +7,13 @@ from Helper.KMeansHelper import KMeansHelper
 def main():
     kmeansHelper = KMeansHelper(3)
     dataset = datasets.load_iris()
-    #kmeansHelper.runKMeans(dataset)
+    # kmeansHelper.runKMeans(dataset)
     data = np.array(dataset["data"])
-    #print(dataset)
+    # print(dataset)
     plt.plot(data)
-    #for key in dataset:
-        #print(dataset[key])
-    
+    plt.show()
+    # for key in dataset:
+        # print(dataset[key])
+
 if __name__ == "__main__":
     main()
