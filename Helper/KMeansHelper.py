@@ -44,7 +44,7 @@ class KMeansHelper:
 
             for k in range(0, self.nrClusters):
                 t = (curAssignment == k)
-                curClusters[k] = sum(data[t])/sum(t)
+                curClusters[k] = sum(data[t])/(max([1,  sum(t)]))
 
             if(sum(lastAssignment == curAssignment) == len(data)):
                 break
