@@ -15,18 +15,18 @@ class KMeansHelper:
         realLow = 99999999
 
         for i in range(0, self.numberOfIterations):
-            tempClusters = np.arange(random.sample(data, self.nrClusters))
+            tempClusters = (random.sample(data, self.nrClusters))
             curResult = self.runAlgorithm(data, tempClusters)
             if curResult[1] < realLow:
                 realLow = curResult[1]
                 realAssignment = curResult[0]
 
-        realAssignment
+        return realAssignment
 
     # data numpy Array containing data
     # tempClusters numpy Array containing the initial values for clusters
     def runAlgorithm(self, data, tempClusters):
-        lastAssignment = np.arange(0, data)
+        lastAssignment = np.arange(0, len(data))
         curClusters = tempClusters
 
         while(True):
@@ -49,14 +49,14 @@ class KMeansHelper:
             if(sum(lastAssignment == curAssignment) == len(data)):
                 break
 
-        (lastAssignment, self.cost(data, curClusters, lastAssignment))
+        return (lastAssignment, self.cost(data, curClusters, lastAssignment))
 
     # data numpy Array containing data
     # clusters numpy array containig values for clusters
     # assignment the resulting assignment for those clusters
     def cost(self, data, clusters, assignment):
         result = 0
-        for i in range(data):
+        for i in range(0, len(data)):
             result += sum((data[i] - clusters[assignment[i]])**2)
 
-        result
+        return result
