@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import datasets
 from Helper.KMeansHelper import KMeansHelper
-
+from Helper.plotHelper import plotHelper
 
 def plotData(data):
     l = []
@@ -37,6 +37,7 @@ def main():
     kmeansHelper = KMeansHelper(3, 150)
     dataset = datasets.load_iris()
     data = np.array(dataset["data"])
+    plotter = plotHelper(data)
 
     realResults = np.array(dataset["target"])
     # plotData(data,0)
@@ -59,7 +60,7 @@ def main():
             succeed += 1
         else:
             print(i, myResult[i], realResults[i], "fail")
-    plotAssignment(data, myResult, [0, 1, 2, 3])
+    plotter.plotAssignment(myResult, [0, 1, 2, 3])
     plt.show()
     print("Success Rate: ", succeed*1.0/len(data))
 
