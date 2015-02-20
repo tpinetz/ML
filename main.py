@@ -4,6 +4,7 @@ from sklearn import datasets
 from Helper.KMeansHelper import KMeansHelper
 from Helper.plotHelper import plotHelper
 
+
 def plotData(data):
     l = []
     for i in range(0, len(data)):
@@ -41,7 +42,6 @@ def main():
 
     realResults = np.array(dataset["target"])
     # plotData(data,0)
-    kmeansHelper.runKMeans(data)
     myResult = kmeansHelper.runKMeans(data)
     succeed = 0
 
@@ -61,8 +61,9 @@ def main():
         else:
             print(i, myResult[i], realResults[i], "fail")
     plotter.plotAssignment(myResult, [0, 1, 2, 3])
+    print("Success Rate: ", succeed * 1.0 / len(data))
     plt.show()
-    print("Success Rate: ", succeed*1.0/len(data))
+
 
 if __name__ == "__main__":
     main()
